@@ -23,6 +23,7 @@ type
     procedure DivideClick(Sender: TObject);
     procedure EqualToClick(Sender: TObject);
     procedure CancelClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
   public
   end;
@@ -33,50 +34,84 @@ implementation
 
 var
   Operation: TOperation;
+  Results: TResults;
 
 procedure TForm1.CancelClick(Sender: TObject);
 begin
+  Operation := nil;
   Edit1.text := '';
   Edit1.SetFocus;
 end;
 
 procedure TForm1.DivideClick(Sender: TObject);
 begin
-  Operation := TDivide.create;
-  Operation.val1:=Edit1.text;
-  Edit1.text := '';
-  Edit1.SetFocus;
-end;
-
-procedure TForm1.EqualToClick(Sender: TObject);
-begin
-  Operation.val2:=Edit1.text;
-  Edit1.text := Operation.Exec;
-  Operation.Free;
-  Edit1.SetFocus;
-end;
-
-procedure TForm1.MinusClick(Sender: TObject);
-begin
-  Operation := TMinus.create;
-  Operation.val1:=Edit1.text;
-  Edit1.text := '';
-  Edit1.SetFocus;
-end;
-
-procedure TForm1.MultiplyClick(Sender: TObject);
-begin
-  Operation := TMultiply.create;
-  Operation.val1:=Edit1.text;
-  Edit1.text := '';
+  if (Edit1.text <> '') then
+  begin
+    if Assigned(Operation) then
+    begin
+      Edit1.text := Operation.Exec(Edit1.text);
+      Operation := nil;
+    end;
+    Operation := TDivide.create(Edit1.text);
+  end;
   Edit1.SetFocus;
 end;
 
 procedure TForm1.SummClick(Sender: TObject);
 begin
-  Operation := TSumm.create;
-  Operation.val1:=Edit1.text;
-  Edit1.text := '';
+  if (Edit1.text <> '') then
+  begin
+    if Assigned(Operation) then
+    begin
+      Edit1.text := Operation.Exec(Edit1.text);
+      Operation := nil;
+    end;
+    Operation := TSumm.create(Edit1.text);
+  end;
+  Edit1.SetFocus;
+end;
+
+procedure TForm1.EqualToClick(Sender: TObject);
+begin
+  if Assigned(Operation) then
+  begin
+    Edit1.text := Operation.Exec(Edit1.text);
+    Operation := nil; //?????????????????????????????????????????
+    //Operation.Free; //?????????????????????????????????????????
+  end;
+  Edit1.SetFocus;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Results := TResults.Create;
+end;
+
+procedure TForm1.MinusClick(Sender: TObject);
+begin
+  if (Edit1.text <> '') then
+  begin
+    if Assigned(Operation) then
+    begin
+      Edit1.text := Operation.Exec(Edit1.text);
+      Operation := nil;
+    end;
+    Operation := TMinus.create(Edit1.text);
+  end;
+  Edit1.SetFocus;
+end;
+
+procedure TForm1.MultiplyClick(Sender: TObject);
+begin
+  if (Edit1.text <> '') then
+  begin
+    if not Assigned(Operation) then
+    begin
+      Edit1.text := Operation.Exec(Edit1.text);
+      Operation := nil;
+    end;
+    Operation := TMultiply.create(Edit1.text);
+  end;
   Edit1.SetFocus;
 end;
 
