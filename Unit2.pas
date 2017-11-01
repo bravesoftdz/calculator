@@ -16,7 +16,7 @@ type
   public
     property val1: string read GetValue1 write SetValue1;
     property val2: string read GetValue2 write SetValue2;
-    function Exec(val: string): string; virtual; abstract;
+    function Exec(val: string; Operation: TOperation): string; virtual; abstract;
   published
     constructor create(val: string); virtual; abstract;
   end;
@@ -29,7 +29,7 @@ type
     procedure SetEdit1Text(Value: string);
   public
     property Text1: string read GetEdit1Text write SetEdit1Text;
-    function Click(Value: string): string;
+    //function Click(Value: string): string;
   end;
 
   TSumm = class(TOperation)
@@ -42,7 +42,7 @@ type
   public
     property val1: string read GetValue1 write SetValue1;
     property val2: string read GetValue2 write SetValue2;
-    function Exec(val: string): string; override;
+    function Exec(val: string; Operation: TOperation): string; override;
   published
     constructor create(val: string); override;
   end;
@@ -57,7 +57,7 @@ type
   public
     property val1: string read GetValue1 write SetValue1;
     property val2: string read GetValue2 write SetValue2;
-    function Exec(val: string): string; override;
+    function Exec(val: string; Operation: TOperation): string; override;
   published
     constructor create(val: string); override;
   end;
@@ -72,7 +72,7 @@ type
   public
     property val1: string read GetValue1 write SetValue1;
     property val2: string read GetValue2 write SetValue2;
-    function Exec(val: string): string; override;
+    function Exec(val: string; Operation: TOperation): string; override;
   published
     constructor create(val: string); override;
   end;
@@ -87,7 +87,7 @@ type
   public
     property val1: string read GetValue1 write SetValue1;
     property val2: string read GetValue2 write SetValue2;
-    function Exec(val: string): string; override;
+    function Exec(val: string; Operation: TOperation): string; override;
   published
     constructor create(val: string); override;
   end;
@@ -101,8 +101,14 @@ begin
   value1 := val;
 end;
 
-function TSumm.Exec(val: string): string;
+function TSumm.Exec(val: string; Operation: TOperation): string;
 begin
+  {if Assigned(Operation) then
+    begin
+      val := floattostr(strtofloat(GetValue1) + strtofloat(val));
+      Operation := nil;
+    end;
+  result := val;}
   result := floattostr(strtofloat(GetValue1) + strtofloat(val));
 end;
 
@@ -133,7 +139,7 @@ begin
   value1 := val;
 end;
 
-function TDivide.Exec(val: string): string;
+function TDivide.Exec(val: string; Operation: TOperation): string;
 begin
   result := floattostr(strtofloat(value1) / strtofloat(val));
 end;
@@ -165,7 +171,7 @@ begin
   value1 := val;
 end;
 
-function TMultiply.Exec(val: string): string;
+function TMultiply.Exec(val: string; Operation: TOperation): string;
 begin
   result := floattostr(strtofloat(value1) * strtofloat(val));
 end;
@@ -197,7 +203,7 @@ begin
   value1 := val;
 end;
 
-function TMinus.Exec(val: string): string;
+function TMinus.Exec(val: string; Operation: TOperation): string;
 begin
   result := floattostr(strtofloat(value1) - strtofloat(val));
 end;
@@ -223,7 +229,7 @@ begin
 end;
 
 { TResult }
-
+ {
 function TResults.Click(Value: string): string;
 begin
   if (Value <> '') then
@@ -239,7 +245,7 @@ begin
       Operation := TDivide.create(Value);
     end;
   end;
-end;
+end;  }
 
 function TResults.GetEdit1Text: string;
 begin

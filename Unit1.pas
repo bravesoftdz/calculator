@@ -49,7 +49,7 @@ begin
   begin
     if Assigned(Operation) then
     begin
-      Edit1.text := Operation.Exec(Edit1.text);
+      Edit1.text := Operation.Exec(Edit1.text, Operation);
       Operation := nil;
     end;
     Operation := TDivide.create(Edit1.text);
@@ -63,7 +63,7 @@ begin
   begin
     if Assigned(Operation) then
     begin
-      Edit1.text := Operation.Exec(Edit1.text);
+      Edit1.text := Operation.Exec(Edit1.text, Operation);
       Operation := nil;
     end;
     Operation := TSumm.create(Edit1.text);
@@ -75,7 +75,7 @@ procedure TForm1.EqualToClick(Sender: TObject);
 begin
   if Assigned(Operation) then
   begin
-    Edit1.text := Operation.Exec(Edit1.text);
+    Edit1.text := Operation.Exec(Edit1.text, Operation);
     Operation := nil; //?????????????????????????????????????????
     //Operation.Free; //?????????????????????????????????????????
   end;
@@ -93,7 +93,7 @@ begin
   begin
     if Assigned(Operation) then
     begin
-      Edit1.text := Operation.Exec(Edit1.text);
+      Edit1.text := Operation.Exec(Edit1.text, Operation);
       Operation := nil;
     end;
     Operation := TMinus.create(Edit1.text);
@@ -107,7 +107,7 @@ begin
   begin
     if not Assigned(Operation) then
     begin
-      Edit1.text := Operation.Exec(Edit1.text);
+      Edit1.text := Operation.Exec(Edit1.text, Operation);
       Operation := nil;
     end;
     Operation := TMultiply.create(Edit1.text);
