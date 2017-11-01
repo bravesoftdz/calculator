@@ -2,62 +2,71 @@ unit Unit2;
 
 interface
 
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
 type
 
-TOperation = class
+  TOperation = class
   public
-    value1, value2: integer;
-    function Exec(value1: integer; value2: integer): Real; virtual; abstract;
-end;
+    value1, value2: string;
+    function Exec(value1: string; value2: string): string; virtual; abstract;
+  end;
 
-TSumm = class(TOperation)
+  TSumm = class(TOperation)
   public
-  function Exec(value1: integer; value2: integer): Real; override;
-end;
+    value1, value2: string;
+    function Exec(value1: string; value2: string): string; override;
+  end;
 
-TMinus = class(TOperation)
+  TMinus = class(TOperation)
   public
-  function Exec(value1: integer; value2: integer): Real; override;
-end;
+    value1, value2: string;
+    function Exec(value1: string; value2: string): string; override;
+  end;
 
-TMultiply = class(TOperation)
+  TMultiply = class(TOperation)
   public
-  function Exec(value1: integer; value2: integer): Real; override;
-end;
+    value1, value2: string;
+    function Exec(value1: string; value2: string): string; override;
+  end;
 
-TDivide = class(TOperation)
+  TDivide = class(TOperation)
   public
-  function Exec(value1: integer; value2: integer): Real; override;
-end;
+    value1, value2: string;
+    function Exec(value1: string; value2: string): string; override;
+  end;
 
 implementation
 
 { TSumm }
 
-function TSumm.Exec(value1: integer; value2: integer): Real;
+function TSumm.Exec(value1: string; value2: string): string;
 begin
-  result :=value1+value2;
+  result := inttostr(strtoint(value1) + strtoint(value2));
 end;
 
 { TDivide }
 
-function TDivide.Exec(value1, value2: integer): Real;
+function TDivide.Exec(value1, value2: string): string;
 begin
-  result :=value1/value2;
+  result := floattostr(strtoint(value1) / strtoint(value2));
 end;
 
 { TMultiply }
 
-function TMultiply.Exec(value1, value2: integer): Real;
+function TMultiply.Exec(value1, value2: string): string;
 begin
-  result :=value1*value2;
+  result := inttostr(strtoint(value1) * strtoint(value2));
 end;
 
 { TMinus }
 
-function TMinus.Exec(value1, value2: integer): Real;
+function TMinus.Exec(value1, value2: string): string;
 begin
-  result :=value1-value2;
+  result := inttostr(strtoint(value1) - strtoint(value2));
 end;
 
 end.

@@ -3,7 +3,8 @@ unit Unit1;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Unit2;
 
@@ -15,13 +16,13 @@ type
     Multiply: TButton;
     Divide: TButton;
     EqualTo: TButton;
-    Button1: TButton;
+    Cancel: TButton;
     procedure SummClick(Sender: TObject);
     procedure MinusClick(Sender: TObject);
     procedure MultiplyClick(Sender: TObject);
     procedure DivideClick(Sender: TObject);
     procedure EqualToClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure CancelClick(Sender: TObject);
   private
   public
   end;
@@ -33,54 +34,49 @@ implementation
 var
   Operation: TOperation;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.CancelClick(Sender: TObject);
 begin
-  if not Assigned(Operation) then
-    Operation.Free;
-  Edit1.text:='';
+  Edit1.text := '';
   Edit1.SetFocus;
 end;
 
 procedure TForm1.DivideClick(Sender: TObject);
 begin
-  if not Assigned(Operation) then
-    Operation := TDivide.create;
-  Operation.value1:=strtoint(Edit1.text);
-  Edit1.text:='';
+  Operation := TDivide.create;
+  Operation.value1 := Edit1.text;
+  Edit1.text := '';
   Edit1.SetFocus;
 end;
 
 procedure TForm1.EqualToClick(Sender: TObject);
 begin
-  Operation.value2:=strtoint(Edit1.text);
-  Edit1.text:=FloatToStr(Operation.Exec(Operation.value1,Operation.value2));
+  Operation.value2 := Edit1.text;
+  Edit1.text := Operation.Exec(Operation.value1, Operation.value2);
+  Operation.Free;
   Edit1.SetFocus;
 end;
 
 procedure TForm1.MinusClick(Sender: TObject);
 begin
-  if not Assigned(Operation) then
-    Operation := TMinus.create;
-  Operation.value1:=strtoint(Edit1.text);
-  Edit1.text:='';
+  Operation := TMinus.create;
+  Operation.value1 := Edit1.text;
+  Edit1.text := '';
   Edit1.SetFocus;
 end;
 
 procedure TForm1.MultiplyClick(Sender: TObject);
 begin
-  if not Assigned(Operation) then
-    Operation := TMultiply.create;
-  Operation.value1:=strtoint(Edit1.text);
-  Edit1.text:='';
+  Operation := TMultiply.create;
+  Operation.value1 := Edit1.text;
+  Edit1.text := '';
   Edit1.SetFocus;
 end;
 
 procedure TForm1.SummClick(Sender: TObject);
 begin
-  if not Assigned(Operation) then
-    Operation := TSumm.create;
-  Operation.value1:=strtoint(Edit1.text);
-  Edit1.text:='';
+  Operation := TSumm.create;
+  Operation.value1 := Edit1.text;
+  Edit1.text := '';
   Edit1.SetFocus;
 end;
 

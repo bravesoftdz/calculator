@@ -67,13 +67,13 @@ object Form1: TForm1
     TabOrder = 5
     OnClick = EqualToClick
   end
-  object Button1: TButton
+  object Cancel: TButton
     Left = 152
     Top = 96
     Width = 25
     Height = 83
     Caption = 'C'
     TabOrder = 6
-    OnClick = Button1Click
+    OnClick = CancelClick
   end
 end
