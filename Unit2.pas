@@ -10,63 +10,177 @@ uses
 type
 
   TOperation = class
+  private
+    function GetValue1: string; virtual; abstract;
+    function GetValue2: string; virtual; abstract;
+    procedure SetValue1(Value: string); virtual; abstract;
+    procedure SetValue2(Value: string);  virtual; abstract;
   public
-    value1, value2: string;
-    function Exec(value1: string; value2: string): string; virtual; abstract;
+    property val1: string read GetValue1 write SetValue1;
+    property val2: string read GetValue2 write SetValue2;
+    function Exec: string; virtual; abstract;
   end;
 
   TSumm = class(TOperation)
-  public
+  private
     value1, value2: string;
-    function Exec(value1: string; value2: string): string; override;
+    function GetValue1: string; override;
+    function GetValue2: string; override;
+    procedure SetValue1(Value: string); override;
+    procedure SetValue2(Value: string);  override;
+  public
+    property val1: string read GetValue1 write SetValue1;
+    property val2: string read GetValue2 write SetValue2;
+    function Exec: string; override;
   end;
 
   TMinus = class(TOperation)
-  public
+  private
     value1, value2: string;
-    function Exec(value1: string; value2: string): string; override;
+    function GetValue1: string; override;
+    function GetValue2: string; override;
+    procedure SetValue1(Value: string); override;
+    procedure SetValue2(Value: string);  override;
+  public
+    property val1: string read GetValue1 write SetValue1;
+    property val2: string read GetValue2 write SetValue2;
+    function Exec: string; override;
   end;
 
   TMultiply = class(TOperation)
-  public
+  private
     value1, value2: string;
-    function Exec(value1: string; value2: string): string; override;
+    function GetValue1: string; override;
+    function GetValue2: string; override;
+    procedure SetValue1(Value: string); override;
+    procedure SetValue2(Value: string);  override;
+  public
+    property val1: string read GetValue1 write SetValue1;
+    property val2: string read GetValue2 write SetValue2;
+    function Exec: string; override;
   end;
 
   TDivide = class(TOperation)
-  public
+  private
     value1, value2: string;
-    function Exec(value1: string; value2: string): string; override;
+    function GetValue1: string; override;
+    function GetValue2: string; override;
+    procedure SetValue1(Value: string); override;
+    procedure SetValue2(Value: string);  override;
+  public
+    property val1: string read GetValue1 write SetValue1;
+    property val2: string read GetValue2 write SetValue2;
+    function Exec: string; override;
   end;
 
 implementation
 
 { TSumm }
 
-function TSumm.Exec(value1: string; value2: string): string;
+function TSumm.Exec: string;
 begin
-  result := inttostr(strtoint(value1) + strtoint(value2));
+  result := floattostr(strtofloat(GetValue1) + strtofloat(GetValue2));
+end;
+
+function TSumm.GetValue1: string;
+begin
+  result:=Value1;
+end;
+
+function TSumm.GetValue2: string;
+begin
+  result:=Value2;
+end;
+
+procedure TSumm.SetValue1(Value: string);
+begin
+  Value1:=Value;
+end;
+
+procedure TSumm.SetValue2(Value: string);
+begin
+  Value2:=Value;
 end;
 
 { TDivide }
 
-function TDivide.Exec(value1, value2: string): string;
+function TDivide.Exec: string;
 begin
-  result := floattostr(strtoint(value1) / strtoint(value2));
+  result := floattostr(strtofloat(value1) / strtofloat(value2));
+end;
+
+function TDivide.GetValue1: string;
+begin
+  result:=Value1;
+end;
+
+function TDivide.GetValue2: string;
+begin
+  result:=Value2;
+end;
+
+procedure TDivide.SetValue1(Value: string);
+begin
+  Value1:=Value;
+end;
+
+procedure TDivide.SetValue2(Value: string);
+begin
+  Value2:=Value;
 end;
 
 { TMultiply }
 
-function TMultiply.Exec(value1, value2: string): string;
+function TMultiply.Exec: string;
 begin
-  result := inttostr(strtoint(value1) * strtoint(value2));
+  result := floattostr(strtofloat(value1) * strtofloat(value2));
+end;
+
+function TMultiply.GetValue1: string;
+begin
+  result:=Value1;
+end;
+
+function TMultiply.GetValue2: string;
+begin
+  result:=Value1;
+end;
+
+procedure TMultiply.SetValue1(Value: string);
+begin
+  Value1:=Value;
+end;
+
+procedure TMultiply.SetValue2(Value: string);
+begin
+  Value2:=Value;
 end;
 
 { TMinus }
 
-function TMinus.Exec(value1, value2: string): string;
+function TMinus.Exec: string;
 begin
-  result := inttostr(strtoint(value1) - strtoint(value2));
+  result := floattostr(strtofloat(value1) - strtofloat(value2));
+end;
+
+function TMinus.GetValue1: string;
+begin
+  result:=Value1;
+end;
+
+function TMinus.GetValue2: string;
+begin
+  result:=Value2;
+end;
+
+procedure TMinus.SetValue1(Value: string);
+begin
+  Value1:=Value;
+end;
+
+procedure TMinus.SetValue2(Value: string);
+begin
+  Value2:=Value;
 end;
 
 end.

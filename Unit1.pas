@@ -43,15 +43,15 @@ end;
 procedure TForm1.DivideClick(Sender: TObject);
 begin
   Operation := TDivide.create;
-  Operation.value1 := Edit1.text;
+  Operation.val1:=Edit1.text;
   Edit1.text := '';
   Edit1.SetFocus;
 end;
 
 procedure TForm1.EqualToClick(Sender: TObject);
 begin
-  Operation.value2 := Edit1.text;
-  Edit1.text := Operation.Exec(Operation.value1, Operation.value2);
+  Operation.val2:=Edit1.text;
+  Edit1.text := Operation.Exec;
   Operation.Free;
   Edit1.SetFocus;
 end;
@@ -59,7 +59,7 @@ end;
 procedure TForm1.MinusClick(Sender: TObject);
 begin
   Operation := TMinus.create;
-  Operation.value1 := Edit1.text;
+  Operation.val1:=Edit1.text;
   Edit1.text := '';
   Edit1.SetFocus;
 end;
@@ -67,7 +67,7 @@ end;
 procedure TForm1.MultiplyClick(Sender: TObject);
 begin
   Operation := TMultiply.create;
-  Operation.value1 := Edit1.text;
+  Operation.val1:=Edit1.text;
   Edit1.text := '';
   Edit1.SetFocus;
 end;
@@ -75,7 +75,7 @@ end;
 procedure TForm1.SummClick(Sender: TObject);
 begin
   Operation := TSumm.create;
-  Operation.value1 := Edit1.text;
+  Operation.val1:=Edit1.text;
   Edit1.text := '';
   Edit1.SetFocus;
 end;
