@@ -92,7 +92,7 @@ implementation
 
 constructor TSumm.create(val: string);
 begin
-  self.val2 := '';
+  if (val <> '') then
   self.val1 := val;
 end;
 
@@ -168,7 +168,7 @@ end;
 
 constructor TMultiply.create(val: string);
 begin
-  self.val2 := '';
+  if (val <> '') then
   self.val1 := val;
 end;
 
@@ -206,7 +206,7 @@ end;
 
 constructor TMinus.create(val: string);
 begin
-  self.val2 := '';
+  if (val <> '') then
   self.val1 := val;
 end;
 
