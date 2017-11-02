@@ -57,6 +57,7 @@ begin
       Operation := nil;
     end;
   end;
+  //Edit1.SetFocus;
   result := text;
 end;
 

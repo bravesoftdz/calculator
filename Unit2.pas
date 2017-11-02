@@ -22,10 +22,6 @@ type
     constructor create(val: string); virtual; abstract;
   end;
 
-  TCheck = class
-    function click(text: string; Operation: TOperation): string;
-  end;
-
   TSumm = class(TOperation)
   private
     value1, value2: string;
@@ -242,23 +238,6 @@ end;
 function TMinus.simvol: string;
 begin
   result := ' -';
-end;
-
-{ TCheck }
-
-function TCheck.click(text: string; Operation: TOperation): string;
-begin
-  if (text <> '') then
-  begin
-    if Assigned(Operation) then
-    begin
-      Operation.val2 := text;
-      text := Operation.Exec;
-      //Label1.Caption := text+Operation.simvol;
-      Operation := nil;
-    end;
-  end;
-  result := text;
 end;
 
 end.
