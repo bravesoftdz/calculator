@@ -3,7 +3,12 @@ program Project1;
 uses
   Vcl.Forms,
   Unit1 in 'Unit1.pas' {Form1} ,
-  Unit2 in 'Unit2.pas';
+  UController in 'UController.pas',
+  UOperation in 'UOperation.pas',
+  USumm in 'USumm.pas',
+  UMinus in 'UMinus.pas',
+  UMultiply in 'UMultiply.pas',
+  UDivide in 'UDivide.pas';
 
 {$R *.res}
 

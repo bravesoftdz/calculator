@@ -86,7 +86,27 @@
 				<Form>Form1</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
-			<DCCReference Include="Unit2.pas"/>
+			<DCCReference Include="UController.pas"/>
+			<DCCReference Include="UOperation.pas"/>
+			<DCCReference Include="USumm.pas"/>
+			<DCCReference Include="UMinus.pas"/>
+			<DCCReference Include="UMultiply.pas"/>
+			<DCCReference Include="UDivide.pas"/>
+			<None Include="ModelSupport_Project1\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\default.txvpck"/>
+			<None Include="ModelSupport_Project1\Unit2\default.txvpck"/>
+			<None Include="ModelSupport_Project1\Project1\default.txvpck"/>
+			<None Include="ModelSupport_Project1\Unit2\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>
+			<None Include="ModelSupport_Project1\Unit1\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\UOperation\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\UController\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\UDivide\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\UMultiply\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\UMinus\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\USumm\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\UOperation\default.txvpck"/>
+			<None Include="ModelSupport_Project1\UController\default.txvpck"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
@@ -140,6 +160,7 @@
 					<Platform value="Win64">False</Platform>
 					<Platform value="Win32">True</Platform>
 				</Platforms>
+				<ModelSupport>True</ModelSupport>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
